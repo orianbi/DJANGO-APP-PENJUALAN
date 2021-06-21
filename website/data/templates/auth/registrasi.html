@@ -1,0 +1,126 @@
+{% extends 'auth.html' %}
+
+{% block content %}
+
+    <div id="login">
+        <h3 class="text-center text-white pt-5">{{ judul }}</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+               
+                    <div id="register-box" class="col-md-12">
+                    
+                       
+                {% load widget_tweaks %}
+                        <form id="login-form" class="form" action="" method="post">
+                         
+                             {% csrf_token %}
+                            
+                            <div class="form-row">
+		<div class="col form-group">
+			<label>{{ form.first_name.label }}</label>   
+            {% if form.is_bound %}
+                {% if form.first_name.errors %}
+                    {% render_field form.first_name class="form-control is-invalid" %}
+                {% else %}
+                    {% render_field form.first_name class="form-control is-valid" %}
+                {% endif %}
+            {% else %}
+                {% render_field form.first_name class="form-control" %}
+            {% endif %}
+            {% for error in form.first_name.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+		</div> <!-- form-group end.// -->
+		<div class="col form-group">
+			<label>{{ form.last_name.label }}</label>
+            {% if form.is_bound %}
+                {% if form.last_name.errors %}
+                    {% render_field form.last_name class="form-control is-invalid" %}
+                {% else %}
+                    {% render_field form.last_name class="form-control is-valid" %}
+                {% endif %}
+            {% else %}
+                {% render_field form.last_name class="form-control" %}
+            {% endif %}
+            {% for error in form.last_name.errors %}
+                <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+		</div> <!-- form-group end.// -->
+	</div> <!-- form-row end.// -->
+    <div class="form-group">
+		<label>{{ form.username.label }}</label>
+		{% if form.is_bound %}
+            {% if form.username.errors %}
+                {% render_field form.username class="form-control is-invalid" %}
+            {% else %}
+                {% render_field form.username class="form-control is-valid" %}
+            {% endif %}
+        {% else %}
+            {% render_field form.username class="form-control" %}
+        {% endif %}
+        {% for error in form.username.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+	</div> <!-- form-group end.// -->
+    <div class="form-group">
+		<label>{{ form.email.label }}</label>
+		{% if form.is_bound %}
+            {% if form.email.errors %}
+                {% render_field form.email class="form-control is-invalid" %}
+            {% else %}
+                {% render_field form.email class="form-control is-valid" %}
+            {% endif %}
+        {% else %}
+            {% render_field form.email class="form-control" %}
+        {% endif %}
+        {% for error in form.email.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+	</div> <!-- form-group end.// -->
+	<div class="form-group">
+		<label>{{ form.password1.label }}</label>
+	    {% if form.is_bound %}
+            {% if form.password1.errors %}
+                {% render_field form.password1 class="form-control is-invalid" %}
+            {% else %}
+                {% render_field form.password1 class="form-control is-valid" %}
+            {% endif %}
+        {% else %}
+            {% render_field form.password1 class="form-control" %}
+        {% endif %}
+        {% for error in form.password1.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+    </div> <!-- form-group end.// -->  
+    <div class="form-group">
+		<label>{{ form.password2.label }}</label>
+	    {% if form.is_bound %}
+            {% if form.password2.errors %}
+                {% render_field form.password2 class="form-control is-invalid" %}
+            {% else %}
+                {% render_field form.password2 class="form-control is-valid" %}
+            {% endif %}
+        {% else %}
+            {% render_field form.password2 class="form-control" %}
+        {% endif %}
+        {% for error in form.password2.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+	</div>
+
+                            <div class="form-group">                               
+                                <input type="submit"  class="btn btn-info btn-md" value="submit">
+                            </div>
+                            <div id="register-link" class="form-group text-right">
+                                <a href="{% url 'login' %}" class="text-info">Login</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock  %}

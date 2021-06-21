@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<br><br>
+
+ <div class="container mt-5">  
+   
+    <div class="row justify-content-md-center">
+
+    <div class="col-md-5">   
+    <div class="card card-body">
+     <h5 class="text-center">{{ judul }}</h5>
+     </div><!--card card-body-->
+    <div class="card card-body">
+    <p> Are You Sure Want to Delete"{{ form}}"?</p>
+    <form action="" method="POST">
+    {% csrf_token %}
+    
+    <a class="btn btn-danger" href="{% url 'home' %}" role="button">Cancel</a>
+    <input type="submit" class="btn btn-primary" name="Confirm"/>
+    </form>
+     </div><!--card card-body-->
+    </div> <!--col-md-->
+   
+    
+    </div><!--row-->
+  </div>
+
+
+
+{% endblock  %}
