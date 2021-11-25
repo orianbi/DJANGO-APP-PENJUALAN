@@ -1,88 +1,102 @@
-{% extends 'index.html' %}
-
-{% block content %}
- <div class="container">  
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-
-    <div class="row">
-
-    <div class="col-md-4">   
-    <div class="card card-body">   
-        <h5>Custemer:</h5>        
-        <hr>
-        <a class="btn btn-outline-info btn-sm btn-block" href="{% url 'update_custemer' custemer.id %}">Update Custemer</a>
-        <a class="btn btn-outline-danger btn-sm btn-block" href="{% url 'delete_custemer' custemer.id %}">Delete Custemer</a>
-    
-    </div> <!--card card-body-->
-    </div> <!--col-md-4-->
- <div class="col-md-4">   
-    <div class="card card-body">   
+{% extends 'index.html' %} {% block content %}
+<div class="container mt-5">
+  <br /><br />
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card card-body">
+        <h5>Custemer:</h5>
+        <hr />
+        <a
+          class="btn btn-outline-info btn-sm btn-block"
+          href="{% url 'update_custemer' custemer.id %}"
+          >Update Custemer</a
+        >
+        <a
+          class="btn btn-outline-danger btn-sm btn-block"
+          href="{% url 'delete_custemer' custemer.id %}"
+          >Delete Custemer</a
+        >
+      </div>
+      <!--card card-body-->
+    </div>
+    <!--col-md-4-->
+    <div class="col-md-4">
+      <div class="card card-body">
         <h5>Contact Information :</h5>
-        <hr>
+        <hr />
         <p>Email : {{custemer.email}}</p>
         <p>Phone : {{custemer.phone}}</p>
-    
-    </div> <!--card card-body-->
-    </div> <!--col-md-4-->
-     <div class="col-md-4">   
-    <div class="card card-body">   
+      </div>
+      <!--card card-body-->
+    </div>
+    <!--col-md-4-->
+    <div class="col-md-4">
+      <div class="card card-body">
         <h5>Total Order:</h5>
-        <hr>
-        <h1 style="text-align: center;padding:10px">{{total_custemer}}</h1>
-    
-    </div> <!--card card-body-->
-    </div> <!--col-md-4-->
-    <br>
-    {% comment %} <div class="row">
-         <div class="col">
-          <div class="card card-body">   
-            <form method="get">
-            <button class="btn btn-primary" type="submit">Search</button>
-            
-            </form>
-         </div> <!--card card-body-->
-    
-        </div> <!--col -->
-    
-    </div> <!--row-->
-    <br> {% endcomment %}
-</div><!--row-->
-<br>
+        <hr />
+        <h1 style="text-align: center; padding: 10px">{{total_custemer}}</h1>
+      </div>
+      <!--card card-body-->
+    </div>
+    <!--col-md-4-->
+    <br />
+    {% comment %}
     <div class="row">
-         <div class="col-md">
-          <div class="card card-body">   
-            <table>
-
-            <tr>
+      <div class="col">
+        <div class="card card-body">
+          <form method="get">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </form>
+        </div>
+        <!--card card-body-->
+      </div>
+      <!--col -->
+    </div>
+    <!--row-->
+    <br />
+    {% endcomment %}
+  </div>
+  <!--row-->
+  <br />
+  <div class="row">
+    <div class="col-md">
+      <div class="card card-body">
+        <table>
+          <tr>
             <th>Product</th>
             <th>Category</th>
             <th>Data Orderd</th>
             <th>Status</th>
             <th>Action</th>
-            
-            
-            </tr>
+          </tr>
 
-            {% for tampil_order_custemer in order_custemer %}
-            <tr>
-                <td>{{tampil_order_custemer.product_id.name}}</td>
-                <td>{{tampil_order_custemer.product_id.category}}</td>
-                <td>{{tampil_order_custemer.date_created| date:"l, d N Y"}}</td>
-                <td>{{tampil_order_custemer.status}}</td>
-                <td>
-                <a class="btn btn-success btn-sm" href="{% url 'update_order' tampil_order_custemer.id %}">update</a>
-       <a class="btn btn-danger btn-sm" href="{% url 'delete_order' tampil_order_custemer.id  %}">delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-            </table>
-         </div> <!--card card-body-->
-    
-        </div> <!--col-md -->
-    
-    </div> <!--row-->
-    
+          {% for tampil_order_custemer in order_custemer %}
+          <tr>
+            <td>{{tampil_order_custemer.product_id.name}}</td>
+            <td>{{tampil_order_custemer.product_id.category}}</td>
+            <td>{{tampil_order_custemer.date_created| date:"l, d N Y"}}</td>
+            <td>{{tampil_order_custemer.status}}</td>
+            <td>
+              <a
+                class="btn btn-success btn-sm"
+                href="{% url 'update_order' tampil_order_custemer.id %}"
+                >update</a
+              >
+              <a
+                class="btn btn-danger btn-sm"
+                href="{% url 'delete_order' tampil_order_custemer.id  %}"
+                >delete</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <!--card card-body-->
+    </div>
+    <!--col-md -->
   </div>
+  <!--row-->
+</div>
 
-{% endblock  %}
+{% endblock %}
